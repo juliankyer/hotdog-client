@@ -1,10 +1,10 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
-import items from './items/reducer';
+import isHotdog from './items/reducer';
 
 const root = combineReducers({
-  items,
+  isHotdog,
   router: routerReducer,
 });
 
