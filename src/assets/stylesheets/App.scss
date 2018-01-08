@@ -1,3 +1,59 @@
-video, canvas {
+.app {
+  position: relative;
+  top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+
+  margin: 0px auto;
+  padding: 25px;
   border: 2px solid magenta;
+}
+
+button, input {
+  border: 2px solid black;
+}
+
+.btn-wrapper {
+  margin: 20px 10px 5px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+canvas {
+  border: 2px solid magenta;
+  width: 250px;
+  height: 250px;
+}
+
+.result {
+  animation: blinker 0.5s linear infinite;
+  text-transform: uppercase;
+  font-size: 70px;
+  color: #cf665f;
+  line-height: 0.9;
+  margin-top: 30px;
+  text-align: center;
+  background-image: linear-gradient(45deg, #689f38, #ffeb3b);
+  padding: 15px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: 430px) {
+  .app {
+    width: 450px;
+  }
+
+  canvas {
+    height: 300px;
+    width: 300px;
+  }
 }

@@ -18,7 +18,7 @@ export function postImageFailure(result) {
 
 export function postImage(formData) {
   return function(dispatch) {
-    fetch('http://localhost:5000/is_hotdog', {
+    fetch('http://beer.local:5000/is_hotdog', {
       method: 'POST',
       body: formData
     })

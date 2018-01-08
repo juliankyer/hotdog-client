@@ -1,5 +1,5 @@
 const initialState = {
-  models: []
+  model: {}
 }
 
 function isHotdog(state = initialState, action) {
@@ -7,7 +7,7 @@ function isHotdog(state = initialState, action) {
   switch (action.type) {
     case 'POST_IMAGE_SUCCESS':
       return Object.assign({}, state, {
-        models: action.result
+        model: action.result
       })
     default:
       return state;

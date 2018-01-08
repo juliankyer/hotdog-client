@@ -8,19 +8,10 @@ import '../assets/stylesheets/App.scss';
 
 export class App extends Component {
 
-  snapPhoto() {
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-
-    context.drawImage(video, 0, 0, 300, 300);
-    this.convertImage(canvas)
-  }
-
-  snapMobile() {
+  snapImage() {
     const canvas = document.getElementById('canvas')
     const context = canvas.getContext('2d');
-    const file = document.getElementById('mobile-image').files[0]
+    const file = document.getElementById('add-image').files[0]
     const img = new Image()
     img.src = URL.createObjectURL(file)
     img.onload = () => {
@@ -48,29 +39,17 @@ export class App extends Component {
     }
   }
 
-  renderResults(results) {
-    return results.map(model => {
-      return <div key={model.probability}>{model.what}, {model.probability}</div>
-    })
-  }
-
   render() {
 
     return (
       <div className="app">
-        <div>Hotdog/Not hotdog</div>
-        <h2>Desktop</h2>
-        <div>
-          <video id="video" width="300" height="300" autoPlay></video>
-          <button id="snap" onClick={() => this.snapPhoto()}>Desktop Snap</button>
-        </div>
-        <h2>Mobile</h2>
-        <div>
-          <input id='mobile-image' type="file" accept="image/*" capture="camera"></input>
-          <button id="snap-mobile" onClick={() => this.snapMobile()}>Mobile Snap</button>
-        </div>
+        <h1 className="header">WHAT AM I EATING?</h1>
         <canvas id="canvas" width="296" height="296"></canvas>
-        <div>{this.renderResults(this.props.models)}</div>
+        <div className="btn-wrapper">
+          <input id='add-image' type="file" accept="image/*" capture="camera"></input>
+          <button id="snap-mobile" onClick={() => this.snapImage()}>WTF is this?</button>
+        </div>
+        <div className="result">{this.props.model.what}</div>
       </div>
     );
   }
@@ -82,7 +61,7 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    models: state.isHotdog.models,
+    model: state.isHotdog.model,
   };
 }
 
