@@ -39,6 +39,12 @@ export class App extends Component {
     }
   }
 
+  renderResult(model) {
+    if(model) {
+      return <div className="result">{model.what}</div>
+    }
+  }
+
   render() {
 
     return (
@@ -49,7 +55,7 @@ export class App extends Component {
           <input id='add-image' type="file" accept="image/*" capture="camera"></input>
           <button id="snap-mobile" onClick={() => this.snapImage()}>WTF is this?</button>
         </div>
-        <div className="result">{this.props.model.what}</div>
+        {this.renderResult(this.props.model)}
       </div>
     );
   }
