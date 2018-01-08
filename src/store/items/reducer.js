@@ -1,16 +1,17 @@
 const initialState = {
-  list: [],
-};
+  models: []
+}
 
-function items(state = initialState, action) {
+function isHotdog(state = initialState, action) {
+  console.log(action)
   switch (action.type) {
-    case 'ADD_ITEM':
+    case 'POST_IMAGE_SUCCESS':
       return Object.assign({}, state, {
-        list: state.list.concat(action.text),
-      });
+        models: action.result
+      })
     default:
       return state;
   }
 }
 
-export default items;
+export default isHotdog;
