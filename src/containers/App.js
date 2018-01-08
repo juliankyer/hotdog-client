@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router';
-import { postImage } from '../store/items/actions'
+import { postImage } from '../store/items/actions';
 
+import Fire from '../assets/images/Fire_gif.gif';
+import Hotdog from '../assets/images/hotdog.gif';
 import '../assets/stylesheets/App.scss';
 
 export class App extends Component {
@@ -29,13 +31,14 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas')
+    const context = canvas.getContext('2d');
 
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-      });
+    const img = new Image()
+    img.src = Hotdog
+    img.onload = () => {
+      context.drawImage(img, 0, 0, 300, 300);
+      // this.convertImage(canvas, file.name)
     }
   }
 
@@ -46,11 +49,14 @@ export class App extends Component {
   }
 
   render() {
-
     return (
       <div className="app">
-        <h1 className="header">WHAT AM I EATING?</h1>
-        <canvas id="canvas" width="296" height="296"></canvas>
+        <h1 className="header">
+          <img className="fire-gif" src={Fire} />
+          WHAT AM I EATING?
+          <img className="fire-gif" src={Fire} />
+        </h1>
+        <canvas id="canvas" width="296" height="296" />
         <div className="btn-wrapper">
           <input id='add-image' type="file" accept="image/*" capture="camera"></input>
           <button id="snap-mobile" onClick={() => this.snapImage()}>WTF is this?</button>

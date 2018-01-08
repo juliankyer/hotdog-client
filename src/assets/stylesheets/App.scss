@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+
 .app {
+  font-family: 'Fredoka One';
   position: relative;
   top: 90px;
   display: flex;
@@ -25,6 +28,7 @@ button, input {
   margin-bottom: 8px;
   font-size: 30px;
   color: #6a1b9a;
+  font-family: 'Fredoka One';
 }
 
 canvas {
@@ -44,6 +48,10 @@ canvas {
   background-image: linear-gradient(45deg, #689f38, #ffeb3b);
   padding: 15px;
   border: 2px solid magenta;
+}
+
+.fire-gif, .hotdog-gif {
+  height: 30px;
 }
 
 @keyframes blinker {
