@@ -9,10 +9,12 @@
   margin: 0px 30px;
   padding: 10px;
   border: 2px solid magenta;
+  background-color: #f3e5f5;
 }
 
 button, input {
   border: 2px solid black;
+  height: 30px;
 }
 
 .btn-wrapper {
@@ -22,6 +24,7 @@ button, input {
 .header {
   margin-bottom: 8px;
   font-size: 30px;
+  color: #6a1b9a;
 }
 
 canvas {
