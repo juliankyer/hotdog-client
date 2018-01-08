@@ -40,7 +40,7 @@ export class App extends Component {
   }
 
   renderResult(model) {
-    if(model) {
+    if(model.what) {
       return <div className="result">{model.what}</div>
     }
   }

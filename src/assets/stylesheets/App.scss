@@ -40,6 +40,7 @@ canvas {
   text-align: center;
   background-image: linear-gradient(45deg, #689f38, #ffeb3b);
   padding: 15px;
+  border: 2px solid magenta;
 }
 
 @keyframes blinker {
@@ -51,6 +52,7 @@ canvas {
 @media screen and (min-width: 430px) {
   .app {
     width: 450px;
+    margin: 0px auto;
   }
 
   canvas {
