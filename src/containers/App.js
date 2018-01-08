@@ -12,7 +12,6 @@ export class App extends Component {
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
-    context.clearRect(0, 0, 300, 300)
 
     context.drawImage(video, 0, 0, 300, 300);
     this.convertImage(canvas)
@@ -21,21 +20,19 @@ export class App extends Component {
   snapMobile() {
     const canvas = document.getElementById('canvas')
     const context = canvas.getContext('2d');
-    context.clearRect(0, 0, 300, 300)
-    const img_el = document.getElementById('mobile-image')
+    const file = document.getElementById('mobile-image').files[0]
     const img = new Image()
-    const url = URL.createObjectURL(img_el.files[0])
-    img.onload = function() {
+    img.src = URL.createObjectURL(file)
+    img.onload = () => {
       context.drawImage(img, 0, 0, 300, 300);
+      this.convertImage(canvas, file.name)
     }
-    img.src = url;
-    this.convertImage(canvas)
   }
 
-  convertImage(cvs) {
+  convertImage(cvs, filename = `upload-${new Date().getTime()}.jpg`) {
     cvs.toBlob(blob => {
       const formData = new FormData();
-      formData.append('file', blob, 'upload.jpg')
+      formData.append('file', blob, filename)
       this.props.sendImage(formData);
     }, 'image/jpeg');
   }
@@ -70,7 +67,7 @@ export class App extends Component {
         <h2>Mobile</h2>
         <div>
           <input id='mobile-image' type="file" accept="image/*" capture="camera"></input>
-          <button id="snap-mobile" onClick={() => this.snapMobile()}>Moile Snap</button>
+          <button id="snap-mobile" onClick={() => this.snapMobile()}>Mobile Snap</button>
         </div>
         <canvas id="canvas" width="296" height="296"></canvas>
         <div>{this.renderResults(this.props.models)}</div>
