@@ -1,0 +1,14 @@
+.loading-block {
+  img {
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 430px) {
+  .loading-block {
+    border: 2px solid magenta;
+    img {
+      height: 80px;
+    }
+  }
+}

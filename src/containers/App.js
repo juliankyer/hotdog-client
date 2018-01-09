@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import { postImage } from '../store/items/actions';
+
+import LoadingBlock from '../components/LoadingBlock';
 
 import Fire from '../assets/images/Fire_gif.gif';
 import Hotdog from '../assets/images/hotdog.gif';
@@ -44,12 +46,11 @@ export class App extends Component {
     img.src = Hotdog;
     img.onload = () => {
       context.drawImage(img, 0, 0, 300, 300);
-      // this.convertImage(canvas, file.name)
     };
   }
 
   renderResult(model) {
-    if (model.what) {
+    if (model.what && this.props.loading === false) {
       return <div className="result">{model.what}</div>;
     }
   }
@@ -66,9 +67,9 @@ export class App extends Component {
     return (
       <div className="app">
         <h1 className="header">
-          <img className="fire-gif" src={Fire} />
+          <img alt="fire gif" className="fire-gif" src={Fire} />
           WHAT AM I EATING?
-          <img className="fire-gif" src={Fire} />
+          <img alt="fire gif" className="fire-gif" src={Fire} />
         </h1>
         <canvas id="canvas" width="296" height="296" />
         <div className="btn-wrapper">
@@ -88,6 +89,7 @@ export class App extends Component {
             WTF is this?
           </button>
         </div>
+        {this.props.loading && <LoadingBlock />}
         {this.renderResult(this.props.model)}
       </div>
     );
@@ -101,6 +103,7 @@ App.propTypes = {
 function mapStateToProps(state) {
   return {
     model: state.isHotdog.model,
+    loading: state.isHotdog.loading,
   };
 }
 
