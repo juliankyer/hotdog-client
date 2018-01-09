@@ -1,3 +1,2 @@
-Setup Heroku
-Github repo
-Connect front and backend
+### Heroku
+* The app is on Heroku [here](https://dashboard.heroku.com/apps/hotdog-client-team-07/deploy/heroku-git)
