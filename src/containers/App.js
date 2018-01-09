@@ -6,7 +6,7 @@ import { postImage } from '../store/items/actions';
 
 import Fire from '../assets/images/Fire_gif.gif';
 import Hotdog from '../assets/images/hotdog.gif';
-import '../assets/stylesheets/App.scss';
+import '../assets/stylesheets/App.css';
 
 export class App extends Component {
 

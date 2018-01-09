@@ -9,7 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './containers/App';
 import configureStore from './store/configureStore';
 
-import './assets/stylesheets/index.scss';
+import './assets/stylesheets/index.css';
 
 // react-md utilizes Google's material icons
 WebFont.load({ google: { families: ['Material Icons'] } });
