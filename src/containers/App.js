@@ -9,43 +9,57 @@ import Hotdog from '../assets/images/hotdog.gif';
 import '../assets/stylesheets/App.css';
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { inputVal: '' };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   snapImage() {
-    const canvas = document.getElementById('canvas')
+    const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
-    const file = document.getElementById('add-image').files[0]
-    const img = new Image()
-    img.src = URL.createObjectURL(file)
+    const file = document.getElementById('add-image').files[0];
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
     img.onload = () => {
       context.drawImage(img, 0, 0, 300, 300);
-      this.convertImage(canvas, file.name)
-    }
+      this.convertImage(canvas, file.name);
+    };
   }
 
   convertImage(cvs, filename = `upload-${new Date().getTime()}.jpg`) {
     cvs.toBlob(blob => {
       const formData = new FormData();
-      formData.append('file', blob, filename)
+      formData.append('file', blob, filename);
       this.props.sendImage(formData);
     }, 'image/jpeg');
   }
 
   componentDidMount() {
-    const canvas = document.getElementById('canvas')
+    const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
 
-    const img = new Image()
-    img.src = Hotdog
+    const img = new Image();
+    img.src = Hotdog;
     img.onload = () => {
       context.drawImage(img, 0, 0, 300, 300);
       // this.convertImage(canvas, file.name)
-    }
+    };
   }
 
   renderResult(model) {
-    if(model.what) {
-      return <div className="result">{model.what}</div>
+    if (model.what) {
+      return <div className="result">{model.what}</div>;
     }
+  }
+
+  handleChange(e) {
+    this.setState({ inputVal: e.target.value });
+  }
+
+  checkInput() {
+    return this.state.inputVal === '';
   }
 
   render() {
@@ -58,8 +72,21 @@ export class App extends Component {
         </h1>
         <canvas id="canvas" width="296" height="296" />
         <div className="btn-wrapper">
-          <input id='add-image' type="file" accept="image/*" capture="camera"></input>
-          <button id="snap-mobile" onClick={() => this.snapImage()}>WTF is this?</button>
+          <input
+            id="add-image"
+            type="file"
+            accept="image/*"
+            capture="camera"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+          <button
+            disabled={this.checkInput()}
+            id="snap-mobile"
+            onClick={() => this.snapImage()}
+          >
+            WTF is this?
+          </button>
         </div>
         {this.renderResult(this.props.model)}
       </div>
@@ -77,10 +104,8 @@ function mapStateToProps(state) {
   };
 }
 
-
 const mapDispatchToProps = dispatch => ({
-  sendImage: (image) =>
-    dispatch(postImage(image)),
+  sendImage: image => dispatch(postImage(image)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
