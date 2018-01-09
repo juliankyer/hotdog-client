@@ -6,6 +6,7 @@
     "@reedsa/react-scripts": "0.2.1",
     "node-sass": "^4.5.3",
     "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
@@ -21,7 +22,7 @@
     "webfontloader": "^1.6.27"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
     "build": "npm rebuild node-sass && npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -30,7 +31,8 @@
     "lint:watch": "esw -w src/**/*.js",
     "test:once": "CI=true react-scripts test --env=jsdom",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start"
   },
   "devDependencies": {
     "custom-react-scripts": "^0.0.23",
