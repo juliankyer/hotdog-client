@@ -18,7 +18,7 @@ export function postImageFailure(result) {
 
 export function postImage(formData) {
   return function(dispatch) {
-    fetch('http://beer.local:5000/is_hotdog', {
+    fetch('https://hotdog-server-team07.herokuapp.com/is_hotdog', {
       method: 'POST',
       body: formData
     })
