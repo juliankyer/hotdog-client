@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+@import 'react-md.scss';
 
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  font-family: 'Fredoka One', serif;
+  font-family: sans-serif;
   background-image: url('../images/snoop-dooog.jpg');
-}
-
-ul {
-  margin: 12px 0;
 }
