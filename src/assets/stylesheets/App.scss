@@ -8,21 +8,37 @@
   flex-direction: column;
   align-items: center;
   background-color: #ffffff;
-
   margin: 0px 30px;
   padding: 10px;
-  border: 2px solid magenta;
+  border: 2px solid #e91e63;
   background-color: #f3e5f5;
+
+  button {
+    border: 2px solid black;
+    margin: 5px;
+    font-family: 'Fredoka One';
+    background: #e91e63;
+    color: #ffffff;
+  }
+
+  button:disabled {
+    background-color: #f8bbd0;
+    color: #607d8b;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
 
   .header {
     margin-bottom: 8px;
-    font-size: 25px;
+    font-size: 20px;
     color: #6a1b9a;
     font-family: 'Fredoka One';
   }
 
   canvas {
-    border: 2px solid magenta;
+    border: 2px solid #e91e63;
     width: 250px;
     height: 250px;
   }
@@ -43,7 +59,7 @@
     text-align: center;
     background-image: linear-gradient(45deg, #689f38, #ffeb3b);
     padding: 15px;
-    border: 2px solid magenta;
+    border: 2px solid #e91e63;
   }
 
   .fire-gif, .hotdog-gif {
@@ -55,24 +71,23 @@
       opacity: 0;
     }
   }
+}
 
-  @media screen and (min-width: 430px) {
-    .app {
-      width: 450px;
-      margin: 0px auto;
-
-      .header {
-        font-size: 30px;
-      }
+@media screen and (min-width: 430px) {
+  .app {
+    max-width: 700px;
+    margin: 0px auto;
+    .header {
+      font-size: 30px;
     }
+  }
 
-    form {
-      margin: 10px;
-    }
+  form {
+    margin: 10px;
+  }
 
-    canvas {
-      height: 300px;
-      width: 300px;
-    }
+  canvas {
+    height: 300px;
+    width: 300px;
   }
 }

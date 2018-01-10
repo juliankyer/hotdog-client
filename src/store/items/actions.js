@@ -24,7 +24,7 @@ export function postImageFailure(result) {
 
 export function postImage(formData) {
   return function(dispatch) {
-    const apiURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const apiURL = process.env.REACT_APP_API_URL || 'http://beer.local:5000';
 
     dispatch(postImageRequest());
     fetch(`${apiURL}/is_hotdog`, {
