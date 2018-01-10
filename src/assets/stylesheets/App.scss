@@ -8,62 +8,82 @@
   flex-direction: column;
   align-items: center;
   background-color: #ffffff;
-
   margin: 0px 30px;
   padding: 10px;
-  border: 2px solid magenta;
+  border: 2px solid #e91e63;
   background-color: #f3e5f5;
-}
 
-button, input {
-  border: 2px solid black;
-  height: 30px;
-}
+  button {
+    border: 2px solid black;
+    margin: 5px;
+    font-family: 'Fredoka One';
+    background: #e91e63;
+    color: #ffffff;
+  }
 
-.btn-wrapper {
-  margin: 20px 10px 5px;
-}
+  button:disabled {
+    background-color: #f8bbd0;
+    color: #607d8b;
+  }
 
-.header {
-  margin-bottom: 8px;
-  font-size: 30px;
-  color: #6a1b9a;
-  font-family: 'Fredoka One';
-}
+  button:hover {
+    cursor: pointer;
+  }
 
-canvas {
-  border: 2px solid magenta;
-  width: 250px;
-  height: 250px;
-}
+  .header {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #6a1b9a;
+    font-family: 'Fredoka One';
+  }
 
-.result {
-  animation: blinker 0.5s linear infinite;
-  text-transform: uppercase;
-  font-size: 50px;
-  color: #cf665f;
-  line-height: 0.9;
-  margin-top: 5px;
-  text-align: center;
-  background-image: linear-gradient(45deg, #689f38, #ffeb3b);
-  padding: 15px;
-  border: 2px solid magenta;
-}
+  canvas {
+    border: 2px solid #e91e63;
+    width: 250px;
+    height: 250px;
+  }
 
-.fire-gif, .hotdog-gif {
-  height: 30px;
-}
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+  }
 
-@keyframes blinker {
-  50% {
-    opacity: 0;
+  .result {
+    animation: blinker 0.5s linear infinite;
+    text-transform: uppercase;
+    font-size: 50px;
+    color: #cf665f;
+    line-height: 0.9;
+    margin-top: 5px;
+    text-align: center;
+    background-image: linear-gradient(45deg, #689f38, #ffeb3b);
+    padding: 15px;
+    border: 2px solid #e91e63;
+  }
+
+  .fire-gif, .hotdog-gif {
+    height: 30px;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
   }
 }
 
 @media screen and (min-width: 430px) {
   .app {
-    width: 450px;
+    max-width: 700px;
     margin: 0px auto;
+    .header {
+      font-size: 30px;
+    }
+  }
+
+  form {
+    margin: 10px;
   }
 
   canvas {
